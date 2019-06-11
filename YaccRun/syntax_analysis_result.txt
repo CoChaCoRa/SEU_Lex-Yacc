@@ -1,0 +1,467 @@
+type -> INT
+identifier -> IDENTIFIER
+identifiers -> identifier
+var_declaration -> type identifiers ;
+type -> IDENTIFIER *
+identifier -> IDENTIFIER
+identifiers -> identifier
+var_declaration -> type identifiers ;
+declarations -> var_declaration
+declarations -> var_declaration declarations
+var_declaration -> TYPEDEF STRUCT IDENTIFIER { declarations } ;
+type -> VOID
+type -> INT *
+type -> INT
+type -> INT
+parameters -> type IDENTIFIER
+parameters -> type IDENTIFIER , parameters
+parameters -> type IDENTIFIER , parameters
+type -> INT
+identifier -> IDENTIFIER
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifier -> assign_statement
+identifiers -> identifier
+identifier -> IDENTIFIER
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifiers -> identifiers , assign_statement
+var_declaration -> type identifiers ;
+local_declarations -> var_declaration
+type -> INT
+identifier -> IDENTIFIER
+identifier -> IDENTIFIER [ IDENTIFIER ]
+simple_expression -> identifier
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifier -> assign_statement
+identifiers -> identifier
+var_declaration -> type identifiers ;
+local_declarations -> local_declarations var_declaration
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+eq_expression -> exp < exp
+exp -> eq_expression
+expression_statement -> ;
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+eq_expression -> exp < exp
+exp -> eq_expression
+identifier -> IDENTIFIER [ IDENTIFIER ]
+simple_expression -> identifier
+exp -> simple_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+eq_expression -> exp GE_OP exp
+exp -> eq_expression
+and_expression -> exp AND_OP exp
+exp -> and_expression
+expression_statement -> exp ;
+simple_expression -> IDENTIFIER DEC_OP
+exp -> simple_expression
+block -> ;
+for_statement -> FOR ( expression_statement expression_statement exp ) block
+statement -> for_statement
+statements -> statement
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+eq_expression -> exp < exp
+exp -> eq_expression
+identifier -> IDENTIFIER [ IDENTIFIER ]
+identifier -> IDENTIFIER [ IDENTIFIER ]
+simple_expression -> identifier
+exp -> simple_expression
+assign_statement -> identifier = exp
+assign_statements -> assign_statement ;
+statement -> assign_statements
+statements -> statement
+simple_expression -> IDENTIFIER INC_OP
+exp -> simple_expression
+expression_statement -> exp ;
+statement -> expression_statement
+statements -> statements statement
+block -> { statements }
+if_statement -> IF ( exp ) block
+statement -> if_statement
+statements -> statements statement
+expression_statement -> ;
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+eq_expression -> exp < exp
+exp -> eq_expression
+identifier -> IDENTIFIER [ IDENTIFIER ]
+simple_expression -> identifier
+exp -> simple_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+eq_expression -> exp LE_OP exp
+exp -> eq_expression
+and_expression -> exp AND_OP exp
+exp -> and_expression
+expression_statement -> exp ;
+simple_expression -> IDENTIFIER INC_OP
+exp -> simple_expression
+block -> ;
+for_statement -> FOR ( expression_statement expression_statement exp ) block
+statement -> for_statement
+statements -> statements statement
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+eq_expression -> exp < exp
+exp -> eq_expression
+identifier -> IDENTIFIER [ IDENTIFIER ]
+identifier -> IDENTIFIER [ IDENTIFIER ]
+simple_expression -> identifier
+exp -> simple_expression
+assign_statement -> identifier = exp
+assign_statements -> assign_statement ;
+statement -> assign_statements
+statements -> statement
+simple_expression -> IDENTIFIER DEC_OP
+exp -> simple_expression
+expression_statement -> exp ;
+statement -> expression_statement
+statements -> statements statement
+block -> { statements }
+if_statement -> IF ( exp ) block
+statement -> if_statement
+statements -> statements statement
+block -> { statements }
+statement -> WHILE ( exp ) block
+statements -> statement
+identifier -> IDENTIFIER [ IDENTIFIER ]
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+assign_statement -> identifier = exp
+assign_statements -> assign_statement ;
+statement -> assign_statements
+statements -> statements statement
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+simple_expression -> NUMBER
+exp -> simple_expression
+add_expression -> exp - exp
+exp -> add_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+eq_expression -> exp > exp
+exp -> eq_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+args -> exp
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+args -> args , exp
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+simple_expression -> NUMBER
+exp -> simple_expression
+add_expression -> exp - exp
+exp -> add_expression
+args -> args , exp
+fun_statement -> IDENTIFIER ( args ) ;
+statement -> fun_statement
+statements -> statement
+block -> { statements }
+if_statement -> IF ( exp ) block
+statement -> if_statement
+statements -> statements statement
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+simple_expression -> NUMBER
+exp -> simple_expression
+add_expression -> exp + exp
+exp -> add_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+eq_expression -> exp > exp
+exp -> eq_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+args -> exp
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+simple_expression -> NUMBER
+exp -> simple_expression
+add_expression -> exp + exp
+exp -> add_expression
+args -> args , exp
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+args -> args , exp
+fun_statement -> IDENTIFIER ( args ) ;
+statement -> fun_statement
+statements -> statement
+block -> { statements }
+if_statement -> IF ( exp ) block
+statement -> if_statement
+statements -> statements statement
+block -> { local_declarations statements }
+fun_declaration -> type IDENTIFIER ( parameters ) block
+type -> INT
+type -> INT
+identifier -> IDENTIFIER
+simple_expression -> NUMBER
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifier -> assign_statement
+identifiers -> identifier
+var_declaration -> type identifiers ;
+local_declarations -> var_declaration
+type -> INT
+identifier -> IDENTIFIER [ NUMBER ] [ NUMBER ]
+identifiers -> identifier
+var_declaration -> type identifiers ;
+local_declarations -> local_declarations var_declaration
+identifier -> IDENTIFIER
+simple_expression -> NUMBER
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifier -> assign_statement
+identifiers -> identifier
+identifier -> IDENTIFIER
+simple_expression -> NUMBER
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifiers -> identifiers , assign_statement
+identifier -> IDENTIFIER
+simple_expression -> NUMBER
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifiers -> identifiers , assign_statement
+identifier -> IDENTIFIER
+simple_expression -> NUMBER
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifiers -> identifiers , assign_statement
+identifier -> IDENTIFIER
+simple_expression -> NUMBER
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifiers -> identifiers , assign_statement
+identifier -> IDENTIFIER
+simple_expression -> NUMBER
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifiers -> identifiers , assign_statement
+identifier -> IDENTIFIER
+simple_expression -> NUMBER
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifiers -> identifiers , assign_statement
+var_declaration -> ENUM IDENTIFIER { identifiers } ;
+local_declarations -> local_declarations var_declaration
+type -> IDENTIFIER
+identifier -> IDENTIFIER
+identifiers -> identifier
+var_declaration -> type identifiers ;
+local_declarations -> local_declarations var_declaration
+type -> IDENTIFIER *
+identifier -> IDENTIFIER
+identifiers -> identifier
+var_declaration -> type identifiers ;
+local_declarations -> local_declarations var_declaration
+type -> BOOL
+identifier -> IDENTIFIER
+simple_expression -> FALSE
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifier -> assign_statement
+identifiers -> identifier
+var_declaration -> type identifiers ;
+local_declarations -> local_declarations var_declaration
+type -> INT
+identifier -> IDENTIFIER [ ]
+simple_expression -> NUMBER
+exp -> simple_expression
+args -> exp
+simple_expression -> NUMBER
+exp -> simple_expression
+args -> args , exp
+simple_expression -> NUMBER
+exp -> simple_expression
+args -> args , exp
+simple_expression -> NUMBER
+exp -> simple_expression
+args -> args , exp
+simple_expression -> NUMBER
+exp -> simple_expression
+args -> args , exp
+simple_expression -> NUMBER
+exp -> simple_expression
+args -> args , exp
+simple_expression -> { args }
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifier -> assign_statement
+identifiers -> identifier
+var_declaration -> type identifiers ;
+local_declarations -> local_declarations var_declaration
+identifier -> IDENTIFIER
+simple_expression -> NUMBER
+exp -> simple_expression
+assign_statement -> identifier ADD_ASSIGN exp
+assign_statements -> assign_statement ;
+statement -> assign_statements
+statements -> statement
+identifier -> IDENTIFIER . IDENTIFIER
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+simple_expression -> NUMBER
+exp -> simple_expression
+mul_expression -> exp * exp
+exp -> mul_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+add_expression -> exp + exp
+exp -> add_expression
+assign_statement -> identifier = exp
+assign_statements -> assign_statement ;
+statement -> assign_statements
+statements -> statements statement
+identifier -> IDENTIFIER
+identifier -> IDENTIFIER PTR_OP IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+assign_statement -> identifier = exp
+assign_statements -> assign_statement ;
+statement -> assign_statements
+statements -> statements statement
+type -> INT
+identifier -> IDENTIFIER
+simple_expression -> NUMBER
+exp -> simple_expression
+assign_statement -> identifier = exp
+identifier -> assign_statement
+identifiers -> identifier
+var_declaration -> type identifiers ;
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+eq_expression -> exp < exp
+exp -> eq_expression
+expression_statement -> exp ;
+simple_expression -> INC_OP IDENTIFIER
+exp -> simple_expression
+simple_expression -> NOT_OP IDENTIFIER
+exp -> simple_expression
+identifier -> IDENTIFIER . IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+and_expression -> exp AND_OP exp
+exp -> and_expression
+eq_expression -> exp NE_OP exp
+exp -> eq_expression
+simple_expression -> FALSE
+exp -> simple_expression
+eq_expression -> exp EQ_OP exp
+exp -> eq_expression
+identifier -> IDENTIFIER
+simple_expression -> TRUE
+exp -> simple_expression
+assign_statement -> identifier = exp
+assign_statements -> assign_statement ;
+statement -> assign_statements
+statements -> statement
+block -> { statements }
+identifier -> IDENTIFIER . IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+simple_expression -> NUMBER
+exp -> simple_expression
+eq_expression -> exp EQ_OP exp
+exp -> eq_expression
+identifier -> IDENTIFIER . IDENTIFIER
+simple_expression -> NUMBER
+exp -> simple_expression
+assign_statement -> identifier ADD_ASSIGN exp
+assign_statements -> assign_statement ;
+statement -> assign_statements
+statements -> statement
+block -> { statements }
+if_statement -> IF ( exp ) block
+statement -> if_statement
+statements -> statement
+block -> { statements }
+if_statement -> IF ( exp ) block ELSE block
+statement -> if_statement
+statements -> statement
+block -> { statements }
+statement -> WHILE ( exp ) block
+statements -> statement
+block -> { statements }
+for_statement -> FOR ( var_declaration expression_statement exp ) block
+statement -> for_statement
+statements -> statements statement
+identifier -> IDENTIFIER
+simple_expression -> identifier
+exp -> simple_expression
+args -> exp
+simple_expression -> NUMBER
+exp -> simple_expression
+args -> args , exp
+simple_expression -> NUMBER
+exp -> simple_expression
+args -> args , exp
+fun_statement -> IDENTIFIER ( args ) ;
+statement -> fun_statement
+statements -> statements statement
+simple_expression -> NUMBER
+exp -> simple_expression
+statement -> RETURN exp ;
+statements -> statements statement
+block -> { local_declarations statements }
+fun_declaration -> type IDENTIFIER ( ) block
+declarations -> fun_declaration
+declarations -> fun_declaration declarations
+declarations -> var_declaration declarations
+program -> declarations
+finish!
