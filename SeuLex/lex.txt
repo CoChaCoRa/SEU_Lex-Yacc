@@ -1,0 +1,113 @@
+%{
+#include <stdio.h>
+void single_line_comment();
+void multi_line_comment();
+%}
+
+digit       [0-9]
+letter      [a-zA-Z]
+id          {letter}({letter}|{digit})*
+number      {digit}+(.{digit}+)?(E[+-]?{digit}+)?
+
+%%
+"//"		{single_line_comment(); return ("SINGLE_LINE_COMMENT");}
+"/*"		{multi_line_comment(); return ("MULTI_LINE_COMMENT");}
+"void"		return ("VOID");
+"int"		return ("INT");
+"char"		return ("CHAR");
+"double"	return ("DOUBLE");
+"float"		return ("FLOAT");
+"bool"      return ("BOOL");
+"true"      return ("TRUE");
+"false"     return ("FALSE");
+"long"	    return ("LONG");
+"short"     return ("SHORT");
+"static"	return ("STATIC");
+"const"     return ("CONST");
+"sizeof"	return ("SIZEOF");
+"enum"		return ("ENUM");
+"typedef"   return ("TYPEDEF");
+"struct"	return ("STRUCT");
+"switch"	return ("SWITCH");
+"break"		return ("BREAK");
+"case"		return ("CASE");
+"default"	return ("DEFAULT");
+"do"		return ("DO");
+"while"		return ("WHILE");
+"for"		return ("FOR");
+"auto"		return ("AUTO");
+"continue"	return ("CONTINUE");
+"if"		return ("IF");
+"else"		return ("ELSE");
+"return"	return ("RETURN");
+{number} 	return ("NUMBER");
+{id}		return ("IDENTIFIER");
+"->"		return ("PTR_OP");
+"+" 		return ("+");
+"-" 		return ("-");
+"*" 		return ("*");	
+"/" 		return ("/");
+"%" 		return ("%");
+"?" 		return ("?");
+"&"         return ("&");
+"++"		return ("INC_OP");
+"--"		return ("DEC_OP");
+"+=" 		return ("ADD_ASSIGN");
+"-=" 		return ("SUB_ASSIGN");
+"*=" 		return ("MUL_ASSIGN");
+"/=" 		return ("DIV_ASSIGN");
+"&&" 		return ("AND_OP");
+"||" 		return ("OR_OP");
+"<=" 		return ("LE_OP");
+">=" 		return ("GE_OP");
+"=" 		return ("="); 
+"==" 		return ("EQ_OP"); 
+"!=" 		return ("NE_OP");
+"!"         return ("NOT_OP");
+"<" 		return ("<");
+">" 		return (">"); 
+"<<"        return ("<<");
+"(" 		return ("(");
+")" 		return (")");
+"{" 		return ("{");
+"}" 		return ("}");
+"[" 		return ("[");
+"]" 		return ("]");
+"," 		return (",");
+"."			return (".");
+";" 		return (";");
+":" 		return (":");
+" "			return (" ");
+"""			return ("\"");
+"'"			return ("'");
+%%
+
+void single_line_comment()
+{
+	while(yy_cp!=0)
+	{
+		if(*yy_cp=='\n')
+		{
+			yy_cp++;
+			return ;
+		}
+		yy_cp++;
+	}
+}
+
+void multi_line_comment()
+{
+	while(yy_cp!=0)
+	{
+		if(yy_cp-1!=0)
+		{
+			if(*yy_cp=='/'&&*(yy_cp-1)=='*')
+			{
+				yy_cp+=2;
+				return ;
+			}
+		}
+		yy_cp++;
+	}
+	printf ("ERROR: unterminated comment!");
+}
