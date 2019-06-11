@@ -1,0 +1,30 @@
+char arr[6]={'g','k','d','g','k','d'};
+const char *s1 = "SEU",*s2 = "CSE",*s3="LEX_YACC";
+int b[6];
+float num=5.14E+4; //single line comment!
+char *c[3];
+
+/*
+multi
+line
+comment
+*/
+int main()
+{
+    c[1]=s1;
+    c[2]=s2;
+    c[3]=s3;
+    for(int i=0;i<6;i++)
+    {
+        switch(arr[i])
+        {
+            case 'g':b[i]=1;
+                     break;
+            case 'k':b[i]=2;
+                     break;
+            case 'd':b[i]=3;
+                     break;
+            default : break;
+        }
+    }
+}
